@@ -1,0 +1,198 @@
+<div class="row w-100 mx-0 auth-page" style="height: 100%">
+  <div class="col-md-12 w-100 mx-0">
+    <div class="card w-100 mx-0 my-auto" style="height: 100%">
+      <div class="row w-100 mx-0">
+        <img
+          src="/assets/images/MicrosoftTeams-image (1).png"
+          style="
+            width: 200px;
+            height: 60px;
+            padding-top: 20px;
+            padding-left: 20px;
+          "
+        />
+        <div
+          class="login-form col-sm-3 right-side-login d-flexalign-items-center"
+        >
+          <div class="auth-form-wrapper px-4 py-3 d-flex">
+            <form class="forms-sample" [formGroup]="loginForm">
+              <div class="mb-3">
+                <h4 class="fw-bolder" routerLink=".">
+                  Login into your account
+                </h4>
+              </div>
+              <div class="mb-3">
+                <label class="form-label text-muted" for="exampleInputEmail1"
+                  >Email</label
+                >
+                <input
+                  class="form-control"
+                  formControlName="email"
+                  id="exampleInputEmail1"
+                  placeholder="Email"
+                  type="email"
+                  style="width: 350px; height: 40px; border-radius: 20px"
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label text-muted" for="exampleInputPassword1"
+                  >Password</label
+                >
+                <input
+                  autocomplete="current-password"
+                  class="form-control"
+                  formControlName="password"
+                  id="exampleInputPassword1"
+                  placeholder="Password"
+                  type="password"
+                  style="width: 350px; height: 40px; border-radius: 20px"
+                />
+              </div>
+
+              <div></div>
+
+              <div class="d-grid gap-2 d-flex justify-content-between">
+                <button
+                  (click)="onLoggedin($event)"
+                  class="text-light fw-bolder"
+                  style="
+                    background-color: #02a7e1;
+                    border: none;
+                    border-radius: 20px;
+                    width: 160px;
+                    height: 40px;
+                  "
+                  type="submit"
+                >
+                  Login
+                </button>
+                <button
+                  class="fw-bolder text-right text-muted"
+                  routerLink="/auth/register"
+                  style="border: none; background-color: white"
+                >
+                  Forgot password?
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-6 left-side-login">
+          <div class="auth-side-wrapper image-style">
+            <!-- <img alt="" class="mt-4 auth-side-wrapper half-image-style" src="./assets/images/jubileeinsurance.png"> -->
+            <img
+              alt=""
+              class="auth-side-wrapper half-image-style"
+              src="/assets/images/MicrosoftTeams-image.png"
+              style="height: 157% !important; float: right !important"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div *ngIf="obsv$ | async as resp">
+  <h1>{{ resp }}</h1>
+</div> -->
+
+<!-- <div class="row w-100 mx-0 auth-page">
+  <div class="col-md-12 w-100 h-100 mx-0 ">
+    <div class="card w-100 h-100 mx-0 ">
+      <div class="row w-100 h-100 mx-0 ">
+
+        <div class="col-md-6 right-side-login mt-6">
+          <div class="auth-form-wrapper px-4 py-5">
+            <a class="nobleui-logo d-block mb-2" routerLink=".">Welcome</a>
+            <h5 class="text-muted fw-normal mb-4">Please provide the following detail to login Into your account.</h5>
+            <form class="forms-sample">
+
+              <div class="mb-3">
+                <label class="form-label" for="exampleInputEmail1">Email address</label>
+                <input class="form-control" formControlName="username" id="exampleInputEmail1" placeholder="Email"
+                       type="email" value="admin@demo.com">
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="exampleInputPassword1">Password</label>
+                <input autocomplete="current-password" class="form-control" formControlName="password"
+                       id="exampleInputPassword1" placeholder="Password" type="password" value="12345678">
+              </div>
+
+              <div class="text-end">
+                <a class="d-block mt-3 fw-bolder text-right mb-2" routerLink="/auth/register">FORGOT PASSWORD?</a>
+              </div>
+
+
+              <div>
+
+              </div>
+
+              <div class="d-grid gap-2">
+                <button (click)="onLoggedin($event)" class="btn btn-danger text-light fw-bolder" style="background-color: #D00D3F!important;"
+                        type="submit">LOGIN
+                </button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+        <div class="col-md-6 left-side-login">
+          <div class="auth-side-wrapper image-style">
+            <img alt="" class="mt-4 auth-side-wrapper half-image-style" src="./assets/images/jubileeinsurance.png">
+            <img alt="" class="auth-side-wrapper half-image-style mt-6" src="./assets/images/Umbrella.png"
+                 style="width: 50%!important; float: right!important;">
+
+            <div class="row text-center">
+              <h1 class="separator fw-bolder text-center w-100">Super Portal</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- <div class="row w-100 mx-0 auth-page">
+  <div class="col-md-8 col-xl-6 mx-auto">
+    <div class="card">
+      <div class="row">
+        <div class="col-md-4 pe-md-0">
+          <div class="auth-side-wrapper" [ngStyle]="{ 'background-image': 'url(https://via.placeholder.com/219x452)' }">
+
+          </div>
+        </div>
+        <div class="col-md-8 ps-md-0">
+          <div class="auth-form-wrapper px-4 py-5">
+            <a routerLink="." class="nobleui-logo d-block mb-2">Noble<span>UI</span></a>
+            <h5 class="text-muted fw-normal mb-4">Welcome back! Log in to your account.</h5>
+            <form class="forms-sample">
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" value="admin@demo.com">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" autocomplete="current-password" placeholder="Password" value="12345678">
+              </div>
+              <div class="form-check mb-3">
+                <input type="checkbox" class="form-check-input" id="authCheck">
+                <label class="form-check-label" for="authCheck">
+                  Remember me
+                </label>
+              </div>
+              <div>
+                <button type="submit" class="btn btn-primary me-2 mb-2 mb-md-0" (click)="onLoggedin($event)">Login</button>
+                <button type="button" class="btn btn-outline-primary btn-icon-text mb-2 mb-md-0">
+                  <i class="feather icon-twitter btn-icon-prepend"></i>
+                  Login with twitter
+                </button>
+              </div>
+              <a routerLink="/auth/register" class="d-block mt-3 text-muted">Not a user? Sign up</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

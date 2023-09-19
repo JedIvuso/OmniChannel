@@ -1,0 +1,71 @@
+:host {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form {
+  padding-top: 250px !important;
+}
+
+.row > * {
+  padding-right: 0;
+  padding-left: 0;
+  margin-top: 0;
+}
+
+.left-side-login {
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  max-height: 800px !important;
+}
+
+.right-side-login {
+  margin: auto;
+}
+
+.image-style {
+  background-size: cover;
+  background-position: center;
+  background-position: top center !important;
+  height: 85%;
+}
+
+.half-image-style {
+  background-size: cover;
+  background-position: center;
+  background-position: top center !important;
+  height: 65% !important;
+}
+
+.dropdown .dropdown-toggle:after, .btn-group .dropdown-toggle:after {
+  color: white!important;
+}
+.nav-link  {
+  margin-left: 20px!important;
+  margin-right: 20px!important;
+}
+
+.separator {
+  color: #D10C3F;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  left: 50%;
+}
+
+.separator::before,
+.separator::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #D10C3F;
+}
+
+.separator:not(:empty)::before {
+  margin-right: .25em;
+}
+
+.separator:not(:empty)::after {
+  margin-left: .25em;
+}

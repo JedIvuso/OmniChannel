@@ -1,0 +1,49 @@
+<div style="text-align: center">
+  <h1 style="margin-bottom: 30px">Record new training</h1>
+  <video class="video" #liveVideo autoplay></video>
+  <span class="m-1"></span>
+  <video
+    class="video"
+    style="width: 480px !important"
+    controls
+    #recordedVideo
+    #audioElement
+  ></video>
+  <br />
+  <button
+    type="button"
+    (click)="startVideoRecording()"
+    *ngIf="!isRecording"
+    class="btn btn-primary"
+    style="background-color: #083273; border: none; border-radius: 29px"
+  >
+    Start Recording
+  </button>
+  <button
+    type="button"
+    (click)="stopVideoRecording()"
+    *ngIf="isRecording"
+    class="btn btn-danger"
+    style="background-color: red; border: none; border-radius: 29px"
+  >
+    Stop Recording
+  </button>
+  <button
+    type="button"
+    (click)="screenShare()"
+    *ngIf="!isSharing"
+    class="btn btn-success"
+    style="border: none; border-radius: 29px; margin-left: 10px;"
+  >
+    Share Screen
+  </button>
+  <button
+    type="button"
+    (click)="stopScreenShare()"
+    *ngIf="isSharing"
+    class="btn btn-warning"
+    style="border: none; border-radius: 29px; margin-left: 10px;"
+  >
+    Stop Share Screen
+  </button>
+</div>
