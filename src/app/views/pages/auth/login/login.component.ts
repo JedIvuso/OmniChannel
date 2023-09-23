@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.value.password,
     };
     console.log(model)
-    this.obsv$ = this._httpService.omniPost('/auth/login', model).pipe(
+    this.obsv$ = this._httpService.omniPostLogin('/auth/login', model).pipe(
       map((resp: Record<string, any>): Record<string, string> => {
         if (resp && resp.respCode === '00') {
           console.log(resp)

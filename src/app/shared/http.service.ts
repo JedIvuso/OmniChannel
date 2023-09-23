@@ -24,10 +24,35 @@ export class HttpService {
     };
   }
 
+  private getHeader(): any {
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'multipart/form-data',
+        Authorization: 'Bearer ' + this._globalService.getToken()
+      })
+    };
+  }
+
   private getHeadersWithoutBearer(): HttpHeaders {
     return new HttpHeaders({
       "Content-Type": "application/json",
     });
+  }
+
+  public omniPostLogin(endpoint: string, model: any): any {
+    return this.http
+      .post(
+        this._globalService.base_url + endpoint,
+        model,
+        this.getHeaders()
+      )
+      .pipe(
+        map((response) => {
+          console.log(response)
+          response = response;
+          return response;
+        })
+      );
   }
 
   public omniPost(endpoint: string, model: any): any {
@@ -35,7 +60,7 @@ export class HttpService {
       .post(
         this._globalService.base_url + endpoint,
         model,
-        this.getHeaders()
+        this.getHeader()
       )
       .pipe(
         map((response) => {

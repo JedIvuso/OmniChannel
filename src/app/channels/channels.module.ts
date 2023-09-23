@@ -6,6 +6,7 @@ import { DemosComponent } from './videos/demos/demos.component';
 import { NgbAccordionModule, NgbDropdownModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { FeatherIconModule } from '../core/feather-icon/feather-icon.module';
 import { VideoModalComponent } from './videos/video-modal/video-modal.component';
+import { AddProjectModalComponent } from './channels/add-project-modal/add-project-modal.component';
 
 const routes: Routes = [
   {
@@ -19,7 +20,7 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  declarations: [ChannelsComponent, DemosComponent, VideoModalComponent],
+  declarations: [ChannelsComponent, DemosComponent, VideoModalComponent, AddProjectModalComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
