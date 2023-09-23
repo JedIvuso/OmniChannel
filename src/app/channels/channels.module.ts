@@ -5,6 +5,7 @@ import { ChannelsComponent } from './channels/channels.component';
 import { DemosComponent } from './videos/demos/demos.component';
 import { NgbAccordionModule, NgbDropdownModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { FeatherIconModule } from '../core/feather-icon/feather-icon.module';
+import { ReactiveFormsModule } from '@angular/forms';
 import { VideoModalComponent } from './videos/video-modal/video-modal.component';
 import { AddProjectModalComponent } from './channels/add-project-modal/add-project-modal.component';
 
@@ -27,7 +28,8 @@ const routes: Routes = [
     FeatherIconModule,
     NgbAccordionModule,
     NgbDropdownModule,
-    NgbTooltipModule
+    NgbTooltipModule,
+    ReactiveFormsModule
   ]
 })
 export class ChannelsModule { }

@@ -27,8 +27,7 @@ export class HttpService {
   private getHeader(): any {
     return {
       headers: new HttpHeaders({
-        'Content-Type': 'multipart/form-data',
-        Authorization: 'Bearer ' + this._globalService.getToken()
+        'Content-Type': 'multipart/form-data'
       })
     };
   }

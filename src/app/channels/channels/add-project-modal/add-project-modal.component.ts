@@ -25,16 +25,18 @@ export class AddProjectModalComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  submit() {
+  submitAdd() {
     const model: any = {
       projectImage: this.addProjectForm.value.projectImage,
       projectName: this.addProjectForm.value.projectName,
       projectDescription: this.addProjectForm.value.projectDescription
     };
-    this.obsv$ = this._httpService.omniPost("project-category/create-project-category", model).pipe(
+    console.log(model)
+    this.obsv$ = this._httpService.omniPost("/project-category/create-project-category", model).pipe(
       map((resp: Record<string, string>): Record<string, string> => {
         if(resp && resp.respCode == "00") {
           this.toastrService.success(resp.message, "Project created successfully");
+          console.log(resp)
           return resp;
         } else {
           this.toastrService.error(resp.message, "Project creation failed");
@@ -49,7 +51,7 @@ export class AddProjectModalComponent implements OnInit {
           this.addProjectForm.reset;
         } else {
           this.errorMsg = `Error: ${error.message}`;
-          this.toastrService.error(this.errorMsg, "Projection Creation Error")
+          this.toastrService.error(this.errorMsg, "Projection Creation Error");
           this.addProjectForm.reset;
         }
         return of([]);

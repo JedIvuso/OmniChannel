@@ -10,6 +10,7 @@ import { AddProjectModalComponent } from './add-project-modal/add-project-modal.
 })
 export class ChannelsComponent implements OnInit {
   public modalRef: NgbModalRef;
+  basicModalCloseResult: string = '';
 
   constructor(private router: Router, private modalService: NgbModal) { }
 
