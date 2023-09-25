@@ -1,36 +1,37 @@
 <div class="modal-header">
-  <h5 class="modal-title" id="exampleModalLabel">Add Project</h5>
+  <h5 class="modal-title" id="exampleModalLabel">Add Channel</h5>
   <button type="button" class="btn-close" aria-label="Close"></button>
 </div>
 <div class="modal-body">
-  <form class="forms-sample" [formGroup]="addProjectForm">
+  <form class="forms-sample" [formGroup]="addChannelForm">
     <div class="mb-3 d-flex">
       <label
         for="exampleInputUsername1"
         class="form-label"
         style="margin-left: auto"
-        >Project Name</label
+        >Channel Title</label
       >
       <input
         type="text"
         class="form-control"
         id="exampleInputUsername1"
-        formControlName="projectName"
+        formControlName="channelTitle"
         autocomplete="off"
-        placeholder="Project Name"
+        placeholder="Channel Title"
         style="height: 20%; width: 50%; margin-right: auto; margin-left: auto"
         required
       />
     </div>
     <div class="mb-3 d-flex justify-content-between">
       <label class="form-label" for="formFile" style="margin-left: auto"
-        >Project Image</label
+        >Channel Image</label
       >
       <input
         class="form-control"
         type="file"
         id="formFile"
-        formControlName="projectImage"
+        (change)="onFileChange($event)"
+        #fileUpload
         style="height: 10%; width: 50%; margin-right: auto; margin-left: auto"
         required
       />
@@ -40,13 +41,13 @@
         for="exampleFormControlTextarea1"
         class="form-label"
         style="margin-left: auto"
-        >Project Description</label
+        >Channel Description</label
       >
       <textarea
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="2"
-        formControlName="projectDescription"
+        formControlName="channelDescription"
         style="width: 50%; margin-right: auto; margin-left: auto"
         required
       ></textarea>

@@ -10,15 +10,15 @@ import { HttpService } from 'src/app/shared/http.service';
   styleUrls: ['./add-project-modal.component.scss']
 })
 export class AddProjectModalComponent implements OnInit {
-  addProjectForm: FormGroup;
+  addChannelForm: FormGroup;
   errorMsg: string;
   obsv$: Observable<any>;
+  public imageFile: File;
 
   constructor(private _httpService: HttpService, private toastrService: ToastrService,) {
-    this.addProjectForm = new FormGroup({
-      projectImage: new FormControl("", [Validators.required]),
-      projectName: new FormControl("", [Validators.required]),
-      projectDescription: new FormControl("", [Validators.required])
+    this.addChannelForm = new FormGroup({
+      channelTitle: new FormControl("", [Validators.required]),
+      channelDescription: new FormControl("", [Validators.required])
     })
   }
 
@@ -26,37 +26,43 @@ export class AddProjectModalComponent implements OnInit {
   }
 
   submitAdd() {
-    const model: any = {
-      projectImage: this.addProjectForm.value.projectImage,
-      projectName: this.addProjectForm.value.projectName,
-      projectDescription: this.addProjectForm.value.projectDescription
-    };
-    console.log(model)
-    this.obsv$ = this._httpService.omniPost("/project-category/create-project-category", model).pipe(
+    let formData=new FormData;
+    if (this.imageFile){
+      console.log('...Product Image has changed...')
+      formData.append('channelImage', this.imageFile);
+    }
+    formData.append('channelTitle', this.addChannelForm.value.channelTitle)
+    formData.append('channelDescription', this.addChannelForm.value.channelDescription)
+
+    this.obsv$ = this._httpService.omniPost("/channel-category/create-channel-category", formData).pipe(
       map((resp: Record<string, string>): Record<string, string> => {
         if(resp && resp.respCode == "00") {
-          this.toastrService.success(resp.message, "Project created successfully");
-          console.log(resp)
+          this.toastrService.success(resp.message, "Channel created successfully");
           return resp;
         } else {
-          this.toastrService.error(resp.message, "Project creation failed");
-          this.addProjectForm.reset;
-          throw new Error("Projection creation failed");
+          this.toastrService.error(resp.message, "Channel creation failed");
+          this.addChannelForm.reset;
+          throw new Error("Channel creation failed");
         }
       }),
       catchError((error) => {
         if(error.error instanceof ErrorEvent) {
           this.errorMsg = `Error: ${error.error.message}`;
-          this.toastrService.error(this.errorMsg, "Projection Creation Error");
-          this.addProjectForm.reset;
+          this.toastrService.error(this.errorMsg, "Channel Creation Error");
+          this.addChannelForm.reset;
         } else {
           this.errorMsg = `Error: ${error.message}`;
-          this.toastrService.error(this.errorMsg, "Projection Creation Error");
-          this.addProjectForm.reset;
+          this.toastrService.error(this.errorMsg, "Channel Creation Error");
+          this.addChannelForm.reset;
         }
         return of([]);
       })
     )
   }
 
+  onFileChange(event: any) {
+    if (event.target.files && event.target.files.length) {
+      this.imageFile = event.target.files[0];
+    }
+  }
 }

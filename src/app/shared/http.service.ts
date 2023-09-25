@@ -18,8 +18,8 @@ export class HttpService {
   private getHeaders(): any {
     return {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + this._globalService.getToken()
+        // 'Content-Type': 'application/json',
+        // Authorization: 'Bearer ' + this._globalService.getToken()
       })
     };
   }
@@ -59,7 +59,7 @@ export class HttpService {
       .post(
         this._globalService.base_url + endpoint,
         model,
-        this.getHeader()
+        this.getHeaders()
       )
       .pipe(
         map((response) => {
