@@ -17,13 +17,20 @@ export class ChannelsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  openAddChannelModel() {
+  getChannelData() {
+    
+  }
+
+  openAddChannelModal() {
     this.modalRef = this.modalService.open(AddProjectModalComponent, {
       centered: true,
       size: "lg",
-      animation: true
     });
     this.modalRef.componentInstance.title = 'Add Channel';
+  }
+
+  openEditChannelModal(){
+
   }
 
   getVideo() {

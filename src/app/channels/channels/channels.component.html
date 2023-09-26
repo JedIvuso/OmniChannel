@@ -14,7 +14,7 @@
     </div>
   </div>
   <div align="end" class="m-3">
-    <button class="btn btn-primary btn-icon-text" (click)="openAddChannelModel()">
+    <button class="btn btn-primary btn-icon-text" (click)="openAddChannelModal()">
       <i class="mdi mdi-plus"></i> Add Channel
     </button>
   </div>
@@ -26,7 +26,7 @@
             <i class="feather icon-more-horizontal icon-lg text-muted pb-3px"></i>
           </button>
           <div ngbDropdownMenu aria-labelledby="dropdownMenuButton">
-            <a ngbDropdownItem class="d-flex align-items-center" href="" (click)="false"><i class="feather icon-edit-2 icon-sm me-2"></i> <span class="">Edit</span></a>
+            <a ngbDropdownItem class="d-flex align-items-center" href="" (click)="false"><i class="feather icon-edit-2 icon-sm me-2"></i> <span class="" (click)="openEditChannelModal()">Edit</span></a>
             <a ngbDropdownItem class="d-flex align-items-center" href="" (click)="false"><i class="feather icon-eye icon-sm me-2"></i> <span class="">View App</span></a>
           </div>
         </div>

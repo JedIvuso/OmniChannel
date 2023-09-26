@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, catchError, map, of } from 'rxjs';
 import { HttpService } from 'src/app/shared/http.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-project-modal',
@@ -15,7 +17,7 @@ export class AddProjectModalComponent implements OnInit {
   obsv$: Observable<any>;
   public imageFile: File;
 
-  constructor(private _httpService: HttpService, private toastrService: ToastrService,) {
+  constructor(private _httpService: HttpService, private toastrService: ToastrService, public activeModal: NgbActiveModal) {
     this.addChannelForm = new FormGroup({
       channelTitle: new FormControl("", [Validators.required]),
       channelDescription: new FormControl("", [Validators.required])
@@ -37,10 +39,16 @@ export class AddProjectModalComponent implements OnInit {
     this.obsv$ = this._httpService.omniPost("/channel-category/create-channel-category", formData).pipe(
       map((resp: Record<string, string>): Record<string, string> => {
         if(resp && resp.respCode == "00") {
-          this.toastrService.success(resp.message, "Channel created successfully");
+          this.activeModal.close('success');
+          Swal.fire('Channel Created',
+            'Channel created successfully',
+            'success').then(r => console.log(r))
           return resp;
         } else {
-          this.toastrService.error(resp.message, "Channel creation failed");
+          this.activeModal.close('error');
+          Swal.fire('Channel creation error',
+            'Channel could not be created.',
+            'error').then(r => console.log(r))
           this.addChannelForm.reset;
           throw new Error("Channel creation failed");
         }
