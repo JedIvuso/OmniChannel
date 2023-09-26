@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./add-project-modal.component.scss']
 })
 export class AddProjectModalComponent implements OnInit {
+  @Input() formData: any;
   addChannelForm: FormGroup;
   errorMsg: string;
   obsv$: Observable<any>;
@@ -25,6 +26,10 @@ export class AddProjectModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  submitData() {
+
   }
 
   submitAdd() {
@@ -66,6 +71,18 @@ export class AddProjectModalComponent implements OnInit {
         return of([]);
       })
     )
+  }
+
+  submitEdit(data: any): any {
+    let formData=new FormData;
+    if (this.imageFile){
+      console.log('...Product Image has changed...')
+      formData.append('channelImage', this.imageFile);
+    }
+    formData.append('channelTitle', this.addChannelForm.value.channelTitle);
+    formData.append('channelDescription', this.addChannelForm.value.channelDescription);
+
+    
   }
 
   onFileChange(event: any) {

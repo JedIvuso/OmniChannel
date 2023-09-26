@@ -70,6 +70,20 @@ export class HttpService {
       );
   }
 
+  public omniGet(endpoint: string): any {
+    return this.http
+      .get(
+        this._globalService.base_url + endpoint
+      )
+      .pipe(
+        map((response) => {
+          console.log(response)
+          response = response;
+          return response;
+        })
+      );
+  }
+
   public login(endpoint: any, model: any): any {
     return this.http.post(this._globalService.base_url + endpoint, model, {
       headers: this.getHeaders(),
