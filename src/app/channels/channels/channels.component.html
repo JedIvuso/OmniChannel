@@ -18,7 +18,7 @@
       <i class="mdi mdi-plus"></i> Add Channel
     </button>
   </div>
-<div class="row row-cols-1 row-cols-md-5 g-4">
+<div class="row row-cols-1 row-cols-md-5 g-4" *ngIf="itemsForPresentation.length > 0; else noItems">
     <div class="col"  style="margin-bottom: 10px;" *ngFor="let slide of itemsForPresentation">
       <div class="card" style="background-color: #EDFBFF;">
         <div align="end" ngbDropdown>
