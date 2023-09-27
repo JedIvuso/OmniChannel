@@ -20,8 +20,8 @@ export class AddProjectModalComponent implements OnInit {
 
   constructor(private _httpService: HttpService, private toastrService: ToastrService, public activeModal: NgbActiveModal) {
     this.addChannelForm = new FormGroup({
-      channelTitle: new FormControl("", [Validators.required]),
-      channelDescription: new FormControl("", [Validators.required])
+      channelTitle: new FormControl(this.formData ? this.formData["channelTitle"] : "", [Validators.required]),
+      channelDescription: new FormControl(this.formData ? this.formData["channelDescription"] : "", [Validators.required])
     })
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { AddProjectModalComponent } from './add-project-modal/add-project-modal.component';
@@ -16,7 +16,7 @@ export class ChannelsComponent implements OnInit {
   itemsForPresentation: any[];
   public channelId:any;
 
-  constructor(private router: Router, private modalService: NgbModal, private _httpService: HttpService) { }
+  constructor(private router: Router, private modalService: NgbModal, private _httpService: HttpService, private ref: ChangeDetectorRef,) { }
 
   ngOnInit(): void {
     this.getChannelData();
@@ -46,6 +46,10 @@ export class ChannelsComponent implements OnInit {
       size: "lg",
     });
     this.modalRef.componentInstance.title = 'Add Channel';
+    this.modalRef.closed.subscribe(() => {
+      this.getChannelData();
+      this.ref.detectChanges();
+    })
   }
 
   openEditChannelModal(formData: any){
